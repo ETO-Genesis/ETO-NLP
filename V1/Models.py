@@ -4,7 +4,7 @@
 # File Name    : Models.py
 # Created By   : Suluo - sampson.suluo@gmail.com
 # Creation Date: 2019-07-13
-# Last Modified: 2019-08-08 20:47:39
+# Last Modified: 2019-08-08 20:52:32
 # Descption    :
 # Version      : Python 3.7
 ############################################
@@ -22,7 +22,7 @@ class TaggerModel(nn.Module):
         self.encoder = EncoderRNN(**opt.encoder)
 
         self.generator = nn.Sequential(
-            nn.Linear(opt.rnn_size, vocab.tgt_vocab_size),
+            nn.Linear(opt.encoder['rnn_size'], vocab.tgt_vocab_size),
             nn.LogSoftmax()
         )
         self.criterion = CRFLoss(opt)
