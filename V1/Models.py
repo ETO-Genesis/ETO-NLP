@@ -4,7 +4,7 @@
 # File Name    : Models.py
 # Created By   : Suluo - sampson.suluo@gmail.com
 # Creation Date: 2019-07-13
-# Last Modified: 2019-08-08 16:19:37
+# Last Modified: 2019-08-08 19:24:39
 # Descption    :
 # Version      : Python 3.7
 ############################################
@@ -18,7 +18,8 @@ class TaggerModel(nn.Module):
     def __init__(self, opt, vocab):
         super().__init__()
 
-        self.encoder = EncoderRNN(opt.encoder)
+        opt.encoder['num_embeddings'] = vocab.src_vocab_size
+        self.encoder = EncoderRNN(**opt.encoder)
 
         self.generator = nn.Sequential(
             nn.Linear(opt.rnn_size, vocab.tgt_vocab_size),
