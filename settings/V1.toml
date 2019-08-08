@@ -1,0 +1,12 @@
+[encoder]
+# embedding
+pretrained_embed = false
+
+# [GRU, LSTM, SRU]
+rnn_type = "GRU"
+
+embedding_dim = 512
+rnn_size = 512
+layers = 2
+dropout = 0.1 
+brnn = true
