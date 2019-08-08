@@ -1,0 +1,3 @@
+[submodule "Net"]
+	path = Net
+	url = https://github.com/ETO-Genesis/Net.git
