@@ -1,0 +1,28 @@
+# Model: seq2seq + attention
+
+
+[encoder]
+# embedding
+pretrained_embed = false
+# RNN
+## [GRU, LSTM, SRU]
+rnn_type = "GRU"
+
+embedding_dim = 512
+layers = 2
+rnn_size = 512
+dropout = 0.1
+brnn = true
+
+[decoder]
+# embedding
+pretrained_embed = false
+# RNN
+rnn_type = "GRU"
+embedding_dim = 512
+layers = 2
+rnn_size = 512
+dropout = 0.1
+brnn = false
+# Attention
+method = "dot"

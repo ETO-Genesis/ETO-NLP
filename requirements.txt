@@ -1,0 +1,11 @@
+toml==0.10.0
+tqdm==4.32.2
+jieba==0.39
+konlpy==0.5.1
+asposebarcode==1.0.0
+nltk==3.4.4
+numpy==1.17.0
+scikit_learn==0.21.3
+tools==0.1.9
+torch==1.1.0.post2
+torchcrf==1.0.4

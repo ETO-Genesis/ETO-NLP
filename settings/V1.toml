@@ -2,9 +2,9 @@
 # embedding
 pretrained_embed = false
 
-# [GRU, LSTM, SRU]
+# RNN
+## [GRU, LSTM, SRU]
 rnn_type = "GRU"
-
 embedding_dim = 512
 rnn_size = 512
 layers = 2
