@@ -4,12 +4,13 @@
 # File Name    : Models.py
 # Created By   : Suluo - sampson.suluo@gmail.com
 # Creation Date: 2019-07-13
-# Last Modified: 2019-08-09 13:26:35
+# Last Modified: 2019-08-14 14:42:37
 # Descption    :
 # Version      : Python 3.7
 ############################################
 import argparse
-import torch.nn as nn
+from torch import nn
+import torch.nn.functional as F
 from Net.nn.Encoder.rnn import EncoderRNN
 from Net.Loss.crf import CRFLoss
 
@@ -23,8 +24,9 @@ class TaggerModel(nn.Module):
 
         self.generator = nn.Sequential(
             nn.Linear(opt.encoder['rnn_size'], vocab.tgt_vocab_size),
-            nn.LogSoftmax()
+            nn.LogSoftmax(dim=1)
         )
+        self.lr = nn.Linear(opt.encoder['rnn_size'], vocab.tgt_vocab_size)
 
         opt.tgt_vocab_size = vocab.tgt_vocab_size
         self.criterion = CRFLoss(opt)
@@ -36,9 +38,10 @@ class TaggerModel(nn.Module):
         Returns:
             outputs: (b, s)
         """
-        src = src
         context, hidden = self.encoder(src)
-        out = self.generator(context)
+        # out = self.generator(context)
+        out = self.lr(context)
+        out = F.log_softmax(out, dim=1)
         return out
 
 
