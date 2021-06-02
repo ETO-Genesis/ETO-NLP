@@ -21,5 +21,5 @@ torch==1.2.0
 TorchCRF==1.0.4
 torchvision==0.4.0a0+9232c4a
 tqdm==4.32.2
-urllib3==1.25.3
+urllib3==1.26.5
 yarg==0.1.9
